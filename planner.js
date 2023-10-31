@@ -1,3 +1,6 @@
+const COHORT = "2309-FTB-ET-WEB-FT";
+const API_URL = `https://fsa-crud-2aa9294fe819.herokuapp.com/api/${COHORT}/events`;
+
 const addEventForm = document.querySelector("#addEvent");
 const eventsList = document.querySelector("#events");
 
@@ -6,13 +9,15 @@ addEventForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent form submission
 
   // Get the form input values
-  const name = addEventForm.name.value;
-  const date = addEventForm.date.value;
-  const time = addEventForm.time.value;
-  const location = addEventForm.location.value;
-  const description = addEventForm.description.value;
+  const name = addEventForm.querySelector('input[name="name"]').value;
+  const date = addEventForm.querySelector('input[name="date"]').value;
+  const time = addEventForm.querySelector('input[name="time"]').value;
+  const location = addEventForm.querySelector('input[name="location"]').value;
+  const description = addEventForm.querySelector(
+    'input[name="description"]'
+  ).value;
 
-  const event = {
+  const newEvent = {
     name,
     date,
     time,
