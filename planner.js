@@ -1,5 +1,6 @@
 const COHORT = "2309-FTB-ET-WEB-FT";
 const API_URL = `https://fsa-crud-2aa9294fe819.herokuapp.com/api/${COHORT}/events`;
+const parties = [];
 
 const addEventForm = document.querySelector("#addEvent");
 const eventsList = document.querySelector("#events");
@@ -40,4 +41,17 @@ Location: ${event.location}<br>
 Description: ${event.description}`;
 
   eventsList.appendChild(listItem);
+}
+
+//----------------------------------------------
+async function getEvents() {
+  try {
+    let response = await fetch(API_URL);
+    let data = await response.json();
+
+    parties = data.data;
+    console.log(parties);
+  } catch (err) {
+    console.error(err);
+  }
 }
